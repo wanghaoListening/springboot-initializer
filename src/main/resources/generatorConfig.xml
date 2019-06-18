@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE generatorConfiguration
-        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
-        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 
 <generatorConfiguration>
     <!--commond run mvn mybatis-generator:generate-->
     <!-- 数据库驱动包位置 /Users/admin/maven_repo/ojdbc/ojdbc6/6/ojdbc6-6.jar-->
     <!-- 数据库驱动包位置 /Users/admin/maven_repo/mysql/mysql-connector-java/5.1.44/mysql-connector-java-5.1.44.jar-->
-    <classPathEntry location="/Users/admin/maven_repo/ojdbc/ojdbc6/6/ojdbc6-6.jar" />
+    <properties resource="generator.properties"/>
     <context id="MysqlTables" targetRuntime="MyBatis3">
         <!-- 为模型生成序列化方法-->
         <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
@@ -24,16 +22,16 @@
         </commentGenerator>
 
         <!-- 数据库链接URL、用户名、密码 -->
-        <jdbcConnection driverClass="${datasource.driver}"
-                        connectionURL="${datasource.url}"
-                        userId="${datasource.username}"
-                        password="${datasource.password}">
+        <jdbcConnection driverClass="${spring.datasource.driverClassName}"
+                        connectionURL="${spring.datasource.url}"
+                        userId="${spring.datasource.username}"
+                        password="${spring.datasource.password}">
             <!--解决mysql驱动升级到8.0后不生成指定数据库代码的问题-->
             <property name="nullCatalogMeansCurrent" value="true" />
         </jdbcConnection>
 
         <!-- 生成实体类的包名和位置，这里配置将生成的实体类放在com.generator.pojo这个包下 -->
-        <javaModelGenerator targetPackage="com.haothink" targetProject="src/main/java/">
+        <javaModelGenerator targetPackage="com.haothink.model" targetProject="src/main/java/">
 
         </javaModelGenerator>
 
