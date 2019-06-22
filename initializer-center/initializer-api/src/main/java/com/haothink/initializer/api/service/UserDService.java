@@ -17,5 +17,5 @@ public interface UserDService {
 
     Result addUser(UserDTO userDTO);
 
-    Result<ArrayList<UserDTO>> getUserById(Long id);
+    Result<UserDTO> getUserById(Long id);
 }

@@ -1,5 +1,7 @@
 package com.haothink.initializer.api.dto;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.Pattern;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -15,10 +17,14 @@ public class UserDTO implements Serializable {
 
     private Long id;
 
+
+    @Pattern(regexp = "[a-zA-Z0-9_\u4e00-\u9fa5]{2,50}",message = "Incorrect username format")
     private String name;
 
+    @Pattern(regexp = "[A-Za-z][0-9A-Za-z]{4,15}",message = "Incorrect password format")
     private String password;
 
+    @Email(message="E-mail address is incorrect")
     private String email;
 
     private Date gmtcreate;
