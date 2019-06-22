@@ -67,7 +67,7 @@ public class UserDServiceImpl implements UserDService {
             UserBO userBO = userService.getUserById(id);
 
             UserDTO userDTO = CopyUtil.copyToNewObject(userBO,UserDTO.class);
-            return Result.buildSuccessResult();
+            return Result.buildSuccessResult(userDTO);
 
         }catch (Exception e){
             LOGGER.error("addOrgUser occur exception: {}",e);
