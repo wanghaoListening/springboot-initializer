@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
  * description:
  */
 @Configuration
-@MapperScan("com.haothink.dao")
+@MapperScan("com.haothink.initializer.biz.dao")
 public class MyBatisConfig {
 
 
