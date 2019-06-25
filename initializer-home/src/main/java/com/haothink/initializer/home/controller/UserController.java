@@ -25,14 +25,14 @@ public class UserController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(UserController.class);
 
-    @Reference
+    @Reference(version="1.0.0")
     private UserDService userDService;
 
 
     @RequestMapping("/signIn")
     public Result signInUser(UserPO userPO){
 
-        LOGGER.error("sign in user by param {}",userPO);
+        LOGGER.info("sign in user by param {}",userPO);
         try {
             UserDTO userDTO = CopyUtil.copyToNewObject(userPO,UserDTO.class);
             Result result = userDService.addUser(userDTO);
@@ -41,7 +41,7 @@ public class UserController {
             }
             return Result.buildFailedResult("注册失败");
         }catch (Exception e){
-            LOGGER.error("sign in user occur ex {}",e);
+            LOGGER.error("sign in user occur ex",e);
             return Result.buildFailedResult("注册失败");
         }
     }
