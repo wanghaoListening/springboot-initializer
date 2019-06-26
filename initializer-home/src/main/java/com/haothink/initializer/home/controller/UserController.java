@@ -7,9 +7,12 @@ import com.haothink.initializer.api.model.Result;
 import com.haothink.initializer.api.service.UserDService;
 
 import com.haothink.initializer.home.beans.po.UserPO;
+import com.haothink.initializer.home.beans.vo.UserVO;
 import com.haothink.initializer.home.utils.CopyUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -29,7 +32,7 @@ public class UserController {
     private UserDService userDService;
 
 
-    @RequestMapping("/signIn")
+    @PostMapping("/signIn")
     public Result signInUser(UserPO userPO){
 
         LOGGER.info("sign in user by param {}",userPO);
@@ -46,5 +49,23 @@ public class UserController {
         }
     }
 
+
+    @GetMapping("/get")
+    public Result acquireUser(Long id){
+
+        LOGGER.info("acquire user by id {}",id);
+        try {
+
+            Result<UserDTO> result = userDService.getUserById(id);
+            if(result.isSuccess()){
+                UserVO userVO = CopyUtil.copyToNewObject(result.getModule(),UserVO.class);
+                return Result.buildSuccessResult(userVO);
+            }
+            return Result.buildFailedResult("获取用户失败");
+        }catch (Exception e){
+            LOGGER.error("acquire user occur ex",e);
+            return Result.buildFailedResult("获取用户失败");
+        }
+    }
 
 }

@@ -30,23 +30,23 @@ public class FastDFSClient {
     /**
      * 配置文件
      */
-    @Value("fastdfs.group.name")
+    @Value("${group.name}")
     private String fastDfsGroupName;
-    @Value("fastdfs.connect_timeout_in_seconds")
+    @Value("${connect_timeout_in_seconds}")
     private int connectionTimeoutInSeconds;
-    @Value("fastdfs.network_timeout_in_seconds")
+    @Value("${network_timeout_in_seconds}")
     private int networkTimeoutInSeconds;
-    @Value("fastdfs.charset")
+    @Value("${charset}")
     private String gCharset;
-    @Value("fastdfs.http_anti_steal_token")
+    @Value("${http_anti_steal_token}")
     private boolean httpAntiStealToken;
-    @Value("fastdfs.http_secret_key")
+    @Value("${http_secret_key}")
     private String httpSecretKey;
-    @Value("fastdfs.http_tracker_http_port")
+    @Value("${http_tracker_http_port}")
     private int httpTrackerHttpPort;
-    @Value("fastdfs.tracker_servers")
+    @Value("${tracker_servers}")
     private String trackerServers;
-    @Value("fastdfs.remote.domain")
+    @Value("${remote.domain}")
     private String fastDfsDomain;
 
 
