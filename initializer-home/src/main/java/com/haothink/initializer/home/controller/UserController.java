@@ -11,10 +11,11 @@ import com.haothink.initializer.home.beans.vo.UserVO;
 import com.haothink.initializer.home.utils.CopyUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 /**
  * @author wanghao
@@ -30,6 +31,20 @@ public class UserController {
 
     @Reference(version="1.0.0")
     private UserDService userDService;
+
+
+    @PostMapping("/loginIn")
+    public Result loginIn(UserPO userPO){
+
+        LOGGER.info("sign in user by param {}",userPO);
+        try {
+
+            return Result.buildFailedResult("注册失败");
+        }catch (Exception e){
+            LOGGER.error("sign in user occur ex",e);
+            return Result.buildFailedResult("注册失败");
+        }
+    }
 
 
     @PostMapping("/signIn")
@@ -66,6 +81,25 @@ public class UserController {
             LOGGER.error("acquire user occur ex",e);
             return Result.buildFailedResult("获取用户失败");
         }
+    }
+
+    @GetMapping("/cookie")
+    public String cookie(@RequestParam("browser") String browser, HttpServletRequest request, HttpSession session) {
+        //取出session中的browser
+        Object sessionBrowser = session.getAttribute("browser");
+        if (sessionBrowser == null) {
+            System.out.println("不存在session，设置browser=" + browser);
+            session.setAttribute("browser", browser);
+        } else {
+            System.out.println("存在session，browser=" + sessionBrowser.toString());
+        }
+        Cookie[] cookies = request.getCookies();
+        if (cookies != null && cookies.length > 0) {
+            for (Cookie cookie : cookies) {
+                System.out.println(cookie.getName() + " : " + cookie.getValue());
+            }
+        }
+        return "index";
     }
 
 }
