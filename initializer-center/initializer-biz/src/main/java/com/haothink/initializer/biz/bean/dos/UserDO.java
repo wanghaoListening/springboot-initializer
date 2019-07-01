@@ -4,35 +4,44 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class UserDO implements Serializable {
+    private Integer id;
 
-    private Long id;
+    private String username;
 
-    private String name;
+    private String accountName;
 
     private String password;
 
     private String email;
 
-    private Date gmtcreate;
+    private Date gmtCreate;
 
-    private Date gmtmodify;
+    private Date gmtModify;
 
     private static final long serialVersionUID = 1L;
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getUsername() {
+        return username;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getAccountName() {
+        return accountName;
+    }
+
+    public void setAccountName(String accountName) {
+        this.accountName = accountName;
     }
 
     public String getPassword() {
@@ -51,32 +60,37 @@ public class UserDO implements Serializable {
         this.email = email;
     }
 
-    public Date getGmtcreate() {
-        return gmtcreate;
+    public Date getGmtCreate() {
+        return gmtCreate;
     }
 
-    public void setGmtcreate(Date gmtcreate) {
-        this.gmtcreate = gmtcreate;
+    public void setGmtCreate(Date gmtCreate) {
+        this.gmtCreate = gmtCreate;
     }
 
-    public Date getGmtmodify() {
-        return gmtmodify;
+    public Date getGmtModify() {
+        return gmtModify;
     }
 
-    public void setGmtmodify(Date gmtmodify) {
-        this.gmtmodify = gmtmodify;
+    public void setGmtModify(Date gmtModify) {
+        this.gmtModify = gmtModify;
     }
-
 
     @Override
     public String toString() {
-        return "UserDO{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", password='" + password + '\'' +
-                ", email='" + email + '\'' +
-                ", gmtcreate=" + gmtcreate +
-                ", gmtmodify=" + gmtmodify +
-                '}';
+        StringBuilder sb = new StringBuilder();
+        sb.append(getClass().getSimpleName());
+        sb.append(" [");
+        sb.append("Hash = ").append(hashCode());
+        sb.append(", id=").append(id);
+        sb.append(", username=").append(username);
+        sb.append(", accountName=").append(accountName);
+        sb.append(", password=").append(password);
+        sb.append(", email=").append(email);
+        sb.append(", gmtCreate=").append(gmtCreate);
+        sb.append(", gmtModify=").append(gmtModify);
+        sb.append(", serialVersionUID=").append(serialVersionUID);
+        sb.append("]");
+        return sb.toString();
     }
 }

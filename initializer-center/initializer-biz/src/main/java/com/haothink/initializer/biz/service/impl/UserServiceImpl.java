@@ -22,6 +22,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public boolean addUser(UserBO userBO) {
         UserDO userDO = CopyUtil.copyToNewObject(userBO,UserDO.class);
+
         int result = userDAO.insertSelective(userDO);
         return (result >=1);
     }
