@@ -5,8 +5,12 @@ import com.haothink.initializer.biz.bean.dos.UserDO;
 import com.haothink.initializer.biz.dao.UserDAO;
 import com.haothink.initializer.biz.service.UserService;
 import com.haothink.initializer.biz.utils.CopyUtil;
+import com.haothink.initializer.biz.utils.PasswordHash;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
 
 /**
  * @author wanghao
@@ -20,9 +24,9 @@ public class UserServiceImpl implements UserService {
     private UserDAO userDAO;
 
     @Override
-    public boolean addUser(UserBO userBO) {
+    public boolean addUser(UserBO userBO) throws InvalidKeySpecException, NoSuchAlgorithmException {
         UserDO userDO = CopyUtil.copyToNewObject(userBO,UserDO.class);
-
+        userDO.setPassword(PasswordHash.createHash(userDO.getPassword()));
         int result = userDAO.insertSelective(userDO);
         return (result >=1);
     }
@@ -34,9 +38,9 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserBO getUserByName(String username) {
+    public UserBO getUserByName(String accountName) {
 
-        UserDO userDO = userDAO.selectByName(username);
+        UserDO userDO = userDAO.selectByName(accountName);
         return CopyUtil.copyToNewObject(userDO,UserBO.class);
     }
 }

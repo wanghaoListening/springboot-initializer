@@ -2,6 +2,8 @@ package com.haothink.initializer.biz.service;
 
 import com.haothink.initializer.biz.bean.bos.UserBO;
 
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
 import java.util.ArrayList;
 
 /**
@@ -12,9 +14,9 @@ import java.util.ArrayList;
 public interface UserService {
 
 
-    boolean addUser(UserBO userBO);
+    boolean addUser(UserBO userBO) throws InvalidKeySpecException, NoSuchAlgorithmException;
 
     UserBO getUserById(Long id);
 
-    UserBO getUserByName(String username);
+    UserBO getUserByName(String accountName);
 }
