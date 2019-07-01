@@ -18,4 +18,6 @@ public interface UserDService {
     Result addUser(UserDTO userDTO);
 
     Result<UserDTO> getUserById(Long id);
+
+    Result<UserDTO> getUserByName(String username);
 }

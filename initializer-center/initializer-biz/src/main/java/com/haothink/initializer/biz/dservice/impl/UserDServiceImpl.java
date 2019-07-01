@@ -8,6 +8,7 @@ import com.haothink.initializer.biz.bean.bos.UserBO;
 import com.haothink.initializer.biz.service.UserService;
 import com.haothink.initializer.biz.utils.CopyUtil;
 import com.haothink.initializer.biz.utils.HibernateValidator;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -69,7 +70,28 @@ public class UserDServiceImpl implements UserDService {
             return Result.buildSuccessResult(userDTO);
 
         }catch (Exception e){
-            LOGGER.error("addOrgUser occur exception: {}",e);
+            LOGGER.error("getUserById occur exception: {}",e);
+            return Result.buildFailedResult(e.toString());
+        }
+    }
+
+    @SuppressWarnings("unchecked")
+    @Override
+    public Result<UserDTO> getUserByName(String username) {
+
+        LOGGER.info("the service getUserByName the username is {}",username);
+        try {
+            if(StringUtils.isBlank(username)){
+                return Result.buildFailedResult("the username must be not null");
+            }
+
+            UserBO userBO = userService.getUserByName(username);
+
+            UserDTO userDTO = CopyUtil.copyToNewObject(userBO,UserDTO.class);
+            return Result.buildSuccessResult(userDTO);
+
+        }catch (Exception e){
+            LOGGER.error("getUserByName occur exception: {}",e);
             return Result.buildFailedResult(e.toString());
         }
     }

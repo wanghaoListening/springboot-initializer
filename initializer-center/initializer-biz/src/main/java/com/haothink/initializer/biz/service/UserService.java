@@ -15,4 +15,6 @@ public interface UserService {
     boolean addUser(UserBO userBO);
 
     UserBO getUserById(Long id);
+
+    UserBO getUserByName(String username);
 }

@@ -31,4 +31,11 @@ public class UserServiceImpl implements UserService {
         UserDO userDO = userDAO.selectByPrimaryKey(id);
         return CopyUtil.copyToNewObject(userDO,UserBO.class);
     }
+
+    @Override
+    public UserBO getUserByName(String username) {
+
+        UserDO userDO = userDAO.selectByName(username);
+        return CopyUtil.copyToNewObject(userDO,UserBO.class);
+    }
 }
