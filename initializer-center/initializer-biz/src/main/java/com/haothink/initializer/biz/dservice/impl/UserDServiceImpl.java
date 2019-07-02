@@ -77,15 +77,15 @@ public class UserDServiceImpl implements UserDService {
 
     @SuppressWarnings("unchecked")
     @Override
-    public Result<UserDTO> getUserByName(String username) {
+    public Result<UserDTO> getUserByName(String accountName) {
 
-        LOGGER.info("the service getUserByName the username is {}",username);
+        LOGGER.info("the service getUserByName the accountName is {}",accountName);
         try {
-            if(StringUtils.isBlank(username)){
+            if(StringUtils.isBlank(accountName)){
                 return Result.buildFailedResult("the username must be not null");
             }
 
-            UserBO userBO = userService.getUserByName(username);
+            UserBO userBO = userService.getUserByName(accountName);
 
             UserDTO userDTO = CopyUtil.copyToNewObject(userBO,UserDTO.class);
             return Result.buildSuccessResult(userDTO);

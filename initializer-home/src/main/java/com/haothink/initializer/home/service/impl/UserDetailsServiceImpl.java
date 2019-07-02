@@ -27,16 +27,16 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
     /**
      * 提供一种从用户名可以查到用户并返回的方法
-     * @param username
-     *        用户名
+     * @param accountName
+     *        账号名
      * @return
      *        用户详细
      * @throws UsernameNotFoundException
      */
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+    public UserDetails loadUserByUsername(String accountName) throws UsernameNotFoundException {
 
-        Result<UserDTO> result = userDService.getUserByName(username);
+        Result<UserDTO> result = userDService.getUserByName(accountName);
         if(!result.isSuccess() || Objects.isNull(result.getModule())){
 
             return null;

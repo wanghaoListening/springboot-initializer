@@ -36,7 +36,19 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        super.configure(http);
+                //允许所有用户访问"/"和"/user/signIn" 注册页
+                 http.authorizeRequests()
+                         .antMatchers("/", "/user/signIn").permitAll()
+                         // 其他地址的访问均需验证权限
+                         .anyRequest().authenticated()
+                         .and()
+                         .formLogin()
+                         //登录接口
+                         .loginPage("/user/loginIn")
+                         .failureUrl("/user/error").permitAll()
+                         .and()
+                         .logout()
+                         .logoutSuccessUrl("/user/get");
     }
 
 

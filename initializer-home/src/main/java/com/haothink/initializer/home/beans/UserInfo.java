@@ -18,7 +18,7 @@ public class UserInfo implements UserDetails {
 
     private Long id;
 
-
+    private String accountName;
     private String name;
 
     private String password;
@@ -110,5 +110,13 @@ public class UserInfo implements UserDetails {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getAccountName() {
+        return accountName;
+    }
+
+    public void setAccountName(String accountName) {
+        this.accountName = accountName;
     }
 }

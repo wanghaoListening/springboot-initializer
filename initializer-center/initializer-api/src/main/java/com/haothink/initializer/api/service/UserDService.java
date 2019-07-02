@@ -19,5 +19,5 @@ public interface UserDService {
 
     Result<UserDTO> getUserById(Long id);
 
-    Result<UserDTO> getUserByName(String username);
+    Result<UserDTO> getUserByName(String accountName);
 }
