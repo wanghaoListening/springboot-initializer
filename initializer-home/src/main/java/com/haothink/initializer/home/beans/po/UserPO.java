@@ -19,6 +19,8 @@ public class UserPO {
     @Email(message="email格式不正确")
     private String email;
 
+    private String accountName;
+
 
     public String getName() {
         return name;
@@ -44,12 +46,21 @@ public class UserPO {
         this.email = email;
     }
 
+    public String getAccountName() {
+        return accountName;
+    }
+
+    public void setAccountName(String accountName) {
+        this.accountName = accountName;
+    }
+
     @Override
     public String toString() {
         return "UserPO{" +
                 "name='" + name + '\'' +
                 ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
+                ", accountName='" + accountName + '\'' +
                 '}';
     }
 }

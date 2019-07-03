@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.Objects;
 
 /**
  * @author wanghao
@@ -33,21 +34,25 @@ public class UserController {
     private UserDService userDService;
 
 
-    @PostMapping("/loginIn")
+    @RequestMapping(value = "/loginIn")
     public Result loginIn(UserPO userPO){
 
-        LOGGER.info("sign in user by param {}",userPO);
+        LOGGER.info("login in user by param {}",userPO);
         try {
-
-            return Result.buildFailedResult("注册失败");
+            Result<UserDTO> result = userDService.getUserByName(userPO.getAccountName());
+            if(!result.isSuccess() || Objects.isNull(result.getModule())){
+                return Result.buildFailedResult("登录失败");
+            }
+            UserDTO userDTO = result.getModule();
+            return Result.buildSuccessResult("登录成功");
         }catch (Exception e){
-            LOGGER.error("sign in user occur ex",e);
-            return Result.buildFailedResult("注册失败");
+            LOGGER.error("login in user occur ex",e);
+            return Result.buildFailedResult("登录失败");
         }
     }
 
 
-    @PostMapping("/signIn")
+    @RequestMapping("/signIn")
     public Result signInUser(UserPO userPO){
 
         LOGGER.info("sign in user by param {}",userPO);

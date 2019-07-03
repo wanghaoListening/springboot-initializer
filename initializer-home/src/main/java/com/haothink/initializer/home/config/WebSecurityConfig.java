@@ -4,9 +4,11 @@ import com.haothink.initializer.home.utils.HashPasswordEncoder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -38,7 +40,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
                 //允许所有用户访问"/"和"/user/signIn" 注册页
                  http.authorizeRequests()
-                         .antMatchers("/", "/user/signIn").permitAll()
+                         .antMatchers(HttpMethod.POST, "/","/user/signIn").permitAll()
                          // 其他地址的访问均需验证权限
                          .anyRequest().authenticated()
                          .and()
@@ -48,7 +50,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                          .failureUrl("/user/error").permitAll()
                          .and()
                          .logout()
-                         .logoutSuccessUrl("/user/get");
+                         .permitAll()
+                         .logoutSuccessUrl("/user/cookie");
     }
 
 
@@ -58,6 +61,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());;
     }
 
+    @Override
+    public void configure(WebSecurity web) throws Exception {
+        // 配置忽略js、css、images静态文件
+        web.ignoring().antMatchers("/js/**", "/css/**", "/images/**");
+    }
 
     @Bean
     public PasswordEncoder passwordEncoder() {

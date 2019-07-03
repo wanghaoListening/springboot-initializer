@@ -17,6 +17,8 @@ public class UserBO {
 
     private String email;
 
+    private String accountName;
+
     private Date gmtcreate;
 
     public String getName() {
@@ -57,5 +59,13 @@ public class UserBO {
 
     public void setGmtcreate(Date gmtcreate) {
         this.gmtcreate = gmtcreate;
+    }
+
+    public String getAccountName() {
+        return accountName;
+    }
+
+    public void setAccountName(String accountName) {
+        this.accountName = accountName;
     }
 }

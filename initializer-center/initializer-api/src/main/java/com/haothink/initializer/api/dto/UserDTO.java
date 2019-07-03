@@ -27,6 +27,8 @@ public class UserDTO implements Serializable {
     @Email(message="E-mail address is incorrect")
     private String email;
 
+    private String accountName;
+
     private Date gmtcreate;
 
 
@@ -70,6 +72,14 @@ public class UserDTO implements Serializable {
         this.gmtcreate = gmtcreate;
     }
 
+    public String getAccountName() {
+        return accountName;
+    }
+
+    public void setAccountName(String accountName) {
+        this.accountName = accountName;
+    }
+
     @Override
     public String toString() {
         return "UserDTO{" +
@@ -77,6 +87,7 @@ public class UserDTO implements Serializable {
                 ", name='" + name + '\'' +
                 ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
+                ", accountName='" + accountName + '\'' +
                 ", gmtcreate=" + gmtcreate +
                 '}';
     }
