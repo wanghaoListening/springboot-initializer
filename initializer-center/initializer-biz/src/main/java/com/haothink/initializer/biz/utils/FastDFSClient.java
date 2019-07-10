@@ -1,6 +1,6 @@
 package com.haothink.initializer.biz.utils;
 
-import com.haothink.initializer.api.model.Result;
+import com.haothink.common.domain.Result;
 import org.csource.common.NameValuePair;
 import org.csource.fastdfs.ClientGlobal;
 import org.csource.fastdfs.StorageClient;

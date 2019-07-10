@@ -2,13 +2,13 @@ package com.haothink.initializer.home.controller;
 
 
 import com.alibaba.dubbo.config.annotation.Reference;
+import com.haothink.common.domain.Result;
+import com.haothink.common.utils.CopyUtil;
 import com.haothink.initializer.api.dto.UserDTO;
-import com.haothink.initializer.api.model.Result;
 import com.haothink.initializer.api.service.UserDService;
 
 import com.haothink.initializer.home.beans.po.UserPO;
 import com.haothink.initializer.home.beans.vo.UserVO;
-import com.haothink.initializer.home.utils.CopyUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
@@ -34,7 +34,7 @@ public class UserController {
     private UserDService userDService;
 
 
-    @RequestMapping(value = "/loginIn")
+    @PostMapping(value = "/loginIn")
     public Result loginIn(UserPO userPO){
 
         LOGGER.info("login in user by param {}",userPO);

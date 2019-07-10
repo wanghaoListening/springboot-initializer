@@ -2,9 +2,8 @@ package com.haothink.initializer.api.service;
 
 
 import com.haothink.initializer.api.dto.UserDTO;
-import com.haothink.initializer.api.model.Result;
+import com.haothink.common.domain.Result;
 
-import java.util.ArrayList;
 
 /**
  * @author wanghao

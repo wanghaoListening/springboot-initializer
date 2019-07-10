@@ -1,11 +1,11 @@
 package com.haothink.initializer.biz.service.impl;
 
+import com.haothink.common.password.PasswordHash;
+import com.haothink.common.utils.CopyUtil;
 import com.haothink.initializer.biz.bean.bos.UserBO;
 import com.haothink.initializer.biz.bean.dos.UserDO;
 import com.haothink.initializer.biz.dao.UserDAO;
 import com.haothink.initializer.biz.service.UserService;
-import com.haothink.initializer.biz.utils.CopyUtil;
-import com.haothink.initializer.biz.utils.PasswordHash;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

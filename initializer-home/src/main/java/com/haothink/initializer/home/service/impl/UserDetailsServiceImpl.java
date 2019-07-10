@@ -1,11 +1,11 @@
 package com.haothink.initializer.home.service.impl;
 
 import com.alibaba.dubbo.config.annotation.Reference;
+import com.haothink.common.domain.Result;
+import com.haothink.common.utils.CopyUtil;
 import com.haothink.initializer.api.dto.UserDTO;
-import com.haothink.initializer.api.model.Result;
 import com.haothink.initializer.api.service.UserDService;
 import com.haothink.initializer.home.beans.UserInfo;
-import com.haothink.initializer.home.utils.CopyUtil;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;

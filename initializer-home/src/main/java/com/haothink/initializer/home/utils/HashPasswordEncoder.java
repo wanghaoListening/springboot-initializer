@@ -183,4 +183,9 @@ public class HashPasswordEncoder implements PasswordEncoder {
             throw new RuntimeException(e);
         }
     }
+
+    public static void main(String[] args) throws InvalidKeySpecException, NoSuchAlgorithmException {
+
+        System.out.println(createHash("wh6532140"));
+    }
 }

@@ -1,13 +1,14 @@
 package com.haothink.initializer.biz.dservice.impl;
 
 import com.alibaba.dubbo.config.annotation.Service;
+import com.haothink.common.domain.Result;
+import com.haothink.common.utils.CopyUtil;
+import com.haothink.common.validate.HibernateValidator;
 import com.haothink.initializer.api.dto.UserDTO;
-import com.haothink.initializer.api.model.Result;
 import com.haothink.initializer.api.service.UserDService;
 import com.haothink.initializer.biz.bean.bos.UserBO;
 import com.haothink.initializer.biz.service.UserService;
-import com.haothink.initializer.biz.utils.CopyUtil;
-import com.haothink.initializer.biz.utils.HibernateValidator;
+
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

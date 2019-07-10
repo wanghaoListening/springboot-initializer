@@ -25,6 +25,7 @@
         <log4j.version>1.3.0.RELEASE</log4j.version>
         <fastdfs.version>1.27</fastdfs.version>
         <initializer-api.verison>0.0.1-SNAPSHOT</initializer-api.verison>
+        <haothink-utils.version>1.0-SNAPSHOT</haothink-utils.version>
     </properties>
 
     <dependencies>
@@ -93,12 +94,20 @@
         </dependency>
 
         <dependency>
-            <groupId>org.hibernate.validator</groupId>
-            <artifactId>hibernate-validator</artifactId>
-        </dependency>
-        <dependency>
             <groupId>org.glassfish</groupId>
             <artifactId>javax.el</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.haothink</groupId>
+            <artifactId>initializer-api</artifactId>
+            <version>${initializer-api.verison}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.haothink</groupId>
+            <artifactId>haothink-common-utils</artifactId>
+            <version>${haothink-utils.version}</version>
         </dependency>
 
         <dependency>
@@ -106,11 +115,7 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>com.haothink</groupId>
-            <artifactId>initializer-api</artifactId>
-            <version>${initializer-api.verison}</version>
-        </dependency>
+
     </dependencies>
 
     <build>
