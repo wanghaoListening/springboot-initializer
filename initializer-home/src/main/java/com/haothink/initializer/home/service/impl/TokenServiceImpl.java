@@ -5,7 +5,6 @@ import com.haothink.common.domain.Result;
 import com.haothink.initializer.home.service.TokenService;
 import com.haothink.initializer.home.utils.RedisUtil;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.commons.lang3.text.StrBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
