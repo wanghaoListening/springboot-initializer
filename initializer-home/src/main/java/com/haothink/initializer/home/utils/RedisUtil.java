@@ -2,6 +2,7 @@ package com.haothink.initializer.home.utils;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
 
 import java.util.List;
@@ -14,6 +15,7 @@ import java.util.concurrent.TimeUnit;
  * @date 2019年06月26日 19:04
  * description:
  */
+@Component
 public class RedisUtil {
 
     @Autowired
