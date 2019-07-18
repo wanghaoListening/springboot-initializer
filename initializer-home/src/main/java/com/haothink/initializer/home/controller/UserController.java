@@ -9,6 +9,7 @@ import com.haothink.initializer.api.service.UserDService;
 
 import com.haothink.initializer.home.beans.po.UserPO;
 import com.haothink.initializer.home.beans.vo.UserVO;
+import com.haothink.initializer.home.ex.HaothinkException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
@@ -56,17 +57,17 @@ public class UserController {
     public Result signInUser(UserPO userPO){
 
         LOGGER.info("sign in user by param {}",userPO);
-        try {
-            UserDTO userDTO = CopyUtil.copyToNewObject(userPO,UserDTO.class);
-            Result result = userDService.addUser(userDTO);
-            if(result.isSuccess()){
-                return Result.buildSuccessResult("注册成功");
-            }
-            return Result.buildFailedResult("注册失败");
-        }catch (Exception e){
-            LOGGER.error("sign in user occur ex",e);
-            return Result.buildFailedResult("注册失败");
+
+        UserDTO userDTO = CopyUtil.copyToNewObject(userPO,UserDTO.class);
+        Result result = userDService.addUser(userDTO);
+        if(result.isSuccess()){
+            return Result.buildSuccessResult("注册成功");
+        }else{
+            LOGGER.error("sign in user {} occur fail",userPO);
+            throw new HaothinkException("注册失败");
         }
+
+
     }
 
 

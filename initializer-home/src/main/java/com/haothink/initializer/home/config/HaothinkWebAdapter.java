@@ -18,7 +18,7 @@ import java.util.Collections;
  * description:
  */
 @Configuration
-public class QfOrgWebAdapter implements WebMvcConfigurer {
+public class HaothinkWebAdapter implements WebMvcConfigurer {
 
     @Autowired
     ActionTrackInterceptor actionTrackInterceptor;
